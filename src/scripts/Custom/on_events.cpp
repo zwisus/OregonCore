@@ -61,6 +61,12 @@ void OnPlayerTalentsReset(Player* /*player*/, bool /*no_cost*/)
 
 }
 
+//This function is called when the player changes map
+void OnMapChange(Player* /*player*/)
+{
+
+}
+
 //This function is called when the player creates a group
 void OnGroupCreated(Group* /*group*/, Player* /*player*/)
 {
@@ -105,6 +111,7 @@ void AddSC_onevents()
     newscript->OnLogin = &OnLogin;
     newscript->OnLogout = &OnLogout;
     newscript->OnPVPKill = &OnPVPKill;
+    newscript->OnMapChange = &OnMapChange;
 
     newscript->OnGroupCreated = &OnGroupCreated;
     newscript->OnGroupPlayerInvited = &OnGroupPlayerInvited;

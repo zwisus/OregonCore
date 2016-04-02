@@ -49,7 +49,7 @@ struct Script
 {
     Script() :
         OnLogin(NULL), OnLogout(NULL), OnPVPKill(NULL), OnCreatureKill(NULL), OnPlayerKilledByCreature(NULL),
-        OnLevelChanged(NULL), OnTalentsReset(NULL), OnGroupCreated(NULL), OnGroupPlayerInvited(NULL), OnGroupPlayerJoined(NULL), 
+        OnLevelChanged(NULL), OnTalentsReset(NULL), OnMapChange(NULL), OnGroupCreated(NULL), OnGroupPlayerInvited(NULL), OnGroupPlayerJoined(NULL),
         OnGroupPlayerRemoved(NULL), OnGroupLeaderChanged(NULL), OnGroupDisbanded(NULL),
         pGossipHello(NULL), pQuestAccept(NULL), pGossipSelect(NULL), pGossipSelectWithCode(NULL),
         pQuestSelect(NULL), pQuestComplete(NULL), pNPCDialogStatus(NULL), pGODialogStatus(NULL),
@@ -69,6 +69,7 @@ struct Script
     void (*OnPlayerKilledByCreature)(Creature*, Player*);
     void (*OnLevelChanged          )(Player*, uint8);
     void (*OnTalentsReset          )(Player*, bool);
+    void (*OnMapChange             )(Player*);
 
     void (*OnGroupCreated          )(Group*, Player*);
     void (*OnGroupPlayerInvited    )(Group*, Player*);
@@ -121,6 +122,7 @@ class ScriptMgr
         void OnPlayerKilledByCreature(Creature* killer, Player* killed);
         void OnPlayerLevelChanged(Player* player, uint8 newLevel);
         void OnPlayerTalentsReset(Player* player, bool no_cost);
+        void OnPlayerMapChange(Player* player);
 
         void OnGroupCreated(Group* group, Player* player);
         void OnGroupPlayerInvited(Group* group, Player* invited);

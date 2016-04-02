@@ -276,6 +276,13 @@ void ScriptMgr::OnPlayerTalentsReset(Player* player, bool no_cost)
     tmpscript->OnTalentsReset(player, no_cost);
 }
 
+void ScriptMgr::OnPlayerMapChange(Player* player)
+{
+    Script* tmpscript = m_scripts[GetScriptId("scripted_on_events")];
+    if (!tmpscript || !tmpscript->OnMapChange) return;
+    tmpscript->OnMapChange(player);
+}
+
 void ScriptMgr::OnGroupCreated(Group* pGroup, Player* pPlayer)
 {
     Script* tmpscript = m_scripts[GetScriptId("scripted_on_events")];

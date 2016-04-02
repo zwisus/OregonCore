@@ -415,6 +415,9 @@ bool Map::AddToMap(Player* player)
     player->m_clientGUIDs.clear();
     player->UpdateObjectVisibility(false);
 
+    //Hook for OnMapChange Event
+    sScriptMgr.OnPlayerMapChange(player);
+
     return true;
 }
 
